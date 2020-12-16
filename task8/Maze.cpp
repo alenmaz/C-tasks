@@ -16,7 +16,7 @@ const MCell& Maze::cell(int i, int j) const
 
 bool Maze::hasConnection(int i1, int j1, int i2, int j2)
 {
-	return ((abs(j2 - j1) == 0 && abs(i2 - i1) == 1) || (abs(i2 - i1) == 0 && abs(j2 - j1) == 1));
+	return (abs(j2 - j1) == 0 && abs(i2 - i1) == 1) || (abs(i2 - i1) == 0 && abs(j2 - j1) == 1);
 }
 
 bool Maze::makeConnection(int i1, int j1, int i2, int j2)
