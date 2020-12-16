@@ -54,16 +54,59 @@ void Maze::printMaze()
 	{
 		for (int i = 0; i < m_n; i++)
 		{
-			if (m_field[i * m_n + j].down())
-				printf("%c", 191);
-			else
+			bool up = false;
+			bool left = false;
+			bool right = m_field[i * m_n + j].right();
+			bool down = m_field[i * m_n + j].down();
+
+			if (j > 0)
+				up = hasConnection(i, j, i, j - 1) && cell(i, j - 1).down();
+			if (i > 0)
+				left = hasConnection(i, j, i - 1, j) && cell(i - 1, j).right();
+
+			char c = 248;
+			if (up && down)
 			{
-				if (m_field[i * m_n + j].right())
-					printf("%c", 192);
-				else
-					printf("0");
+				if (!left && !right)
+					c = 179;
+				if (right && left)
+					c = 197;
+				if (left && !right)
+					c = 180;
+				if (right && !left)
+					c = 195;
+
 			}
+
+			if (up && !down)
+			{
+				if (right && left)
+					c = 193;
+				if (!right && left)
+					c = 217;
+				if (right && !left)
+					c = 192;
+			}
+
+			if (!up && down)
+			{
+				if (!right && left)
+					c = 191;
+				if (right && left)
+					c = 194;
+				if (right && !left)
+					c = 218;
+			}
+
+			if (!up && !down)
+			{
+				if (left && right)
+					c = 196;
+			}
+
+			printf("%c", c);
 		}
+
 		printf("\n");
 	}
 }

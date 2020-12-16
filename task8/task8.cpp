@@ -10,11 +10,10 @@ int main()
 		{
 			if (j == i)
 			{
-				maze.makeConnection(i, j, i + 1, j);
+				maze.makeConnection(i, j, i - 1, j);
 				maze.makeConnection(i + 1, j, i + 1, j + 1);
 			}
 		}
-	maze.removeConnection(0, 0, 1, 0);
 	maze.printMaze();
 	return 0;
 }
