@@ -1,6 +1,7 @@
 ﻿#include "Maze.h"
 
-int main()
+
+void main()
 {
 	int n = 5;
 	int m = 5;
@@ -10,10 +11,10 @@ int main()
 		{
 			if (j == i)
 			{
-				maze.makeConnection(i, j, i - 1, j);
-				maze.makeConnection(i + 1, j, i + 1, j + 1);
+				maze.makeConnection(i, j, i, j + 1);
+				maze.makeConnection(i, j + 1, i + 1, j + 1);
 			}
 		}
 	maze.printMaze();
-	return 0;
+	return;
 }
